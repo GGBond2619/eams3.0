@@ -14,8 +14,7 @@ import org.springframework.stereotype.Repository;
 public interface IActivityDao {
   @Select({"select * from activity order by begintime desc"})
   List<Activity> findAll();
-
-
+  
   @Select({"select * from activity where ano = #{ano}"})
   Activity findActivityByAno(@Param("ano") Integer paramInteger);
   
