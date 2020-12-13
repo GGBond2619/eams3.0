@@ -38,6 +38,10 @@ public interface IEnjoyCompetitionDao {
   
   @Select({"select * from enjoycompetition where sno=#{sno} and cid=#{cid}"})
   EnjoyCompetition findBySnoCid(@Param("sno") String paramString, @Param("cid") Integer paramInteger);
+
+  @Select({"select * from enjoycompetition where sno like #{sno} and cid in (select cid from competition where cname like #{cname})"})
+  @Results({@Result(id = true, column = "eid", property = "eid"), @Result(column = "cid", property = "cname", one = @One(select = "com.byau.dao.ICompetitionDao.findCnameByCid")), @Result(column = "cid", property = "cid"), @Result(column = "sno", property = "sno"), @Result(column = "sno", property = "students", many = @Many(select = "com.byau.dao.IStudentDao.findStudentBySno"))})
+  List<EnjoyCompetition> findByEle(@Param("sno") String sno,@Param("cname") String cname);
 }
 
 

@@ -31,6 +31,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping({"enjoyCompetition"})
 @Controller
 public class EnjoyCompetitionController {
+    String sno = "";
+    String cname = "";
     @Autowired
     IEnjoyCompetitionService enjoyCompetitionService;
 
@@ -190,7 +192,25 @@ public class EnjoyCompetitionController {
 //        }
 //        response.sendRedirect(request.getContextPath() + "/enjoycompetition/findAll");
 //    }
-
+@RequestMapping({"findByEle"})
+public String findStudentByEle(Model model, String sno, String cname) {
+    if (sno == null) {
+        sno = "";
+    } else {
+        model.addAttribute("sno", sno);
+    }
+    if (cname == null) {
+        cname = "";
+    } else {
+        model.addAttribute("cname", cname);
+    }
+    this.sno = sno;
+    this.cname = cname;
+    System.out.println("EnjoyCompetitionController findByEle.");
+    List<EnjoyCompetition> enjoyCompetitions = this.enjoyCompetitionService.findByEle(sno, cname);
+    model.addAttribute("enjoycompetitionlist", enjoyCompetitions);
+    return "enjoycompetition/enjoycompetition_all";
+}
     @RequestMapping({"findAll"})
     public String findAll(Model model) {
         List<EnjoyCompetition> enjoyCompetitions = this.enjoyCompetitionService.findAll();

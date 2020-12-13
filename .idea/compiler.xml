@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="eams" />
+        <module name="eams - 3" />
       </profile>
     </annotationProcessing>
   </component>

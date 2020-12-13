@@ -263,7 +263,7 @@
                         <div class="card">
                             <div class="card-toolbar clearfix">
                                 <div class="toolbar-btn-action">
-                                    <form class="form-horizontal" id="findForm" action="/student/findStudentByEle"
+                                    <form class="form-horizontal" id="findForm" action="/enjoyCompetition/findByEle"
                                           method="get"
                                           onsubmit="return false;">
                                         <div class="form-group">

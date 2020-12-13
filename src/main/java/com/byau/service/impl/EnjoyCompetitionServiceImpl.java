@@ -72,4 +72,16 @@ public class EnjoyCompetitionServiceImpl implements IEnjoyCompetitionService {
         System.out.println(competition.getStudents());
         return competition;
     }
+
+    @Override
+    public List<EnjoyCompetition> findByEle(String sno, String cname) {
+
+        sno = "%" + sno + "%";
+
+        cname = "%" + cname + "%";
+
+        System.out.println("EnjoyCompetitionServiceImpl findByEle");
+
+        return this.enjoyCompetitionDao.findByEle(sno, cname);
+    }
 }
